@@ -1,0 +1,37 @@
+/*
+TA_GEOTECH_LIBELLE : Création de la table TA_GEOTECH_LIBELLE permettant d''associer un libelle à un objet afin de le qualifier.
+*/
+
+-- 1. La table
+CREATE TABLE G_GEO.TA_GEOTECH_LIBELLE (
+	"OBJECTID" NUMBER(38,0) DEFAULT G_GEO.SEQ_TA_GEOTECH_LIBELLE_OBJECTID.NEXTVAL NOT NULL,
+	"FID_LIBELLE_LONG" NUMBER(38,0)
+ );
+
+-- 2. Les commentaires
+COMMENT ON TABLE G_GEO.TA_GEOTECH_LIBELLE IS 'Table permettant d''associer un libelle à un objet afin de le qualifier.';
+COMMENT ON COLUMN G_GEO.TA_GEOTECH_LIBELLE.OBJECTID IS 'Clé primaire auto-incrémentée de la table.';
+COMMENT ON COLUMN G_GEO.TA_GEOTECH_LIBELLE.VALEUR IS 'Clé étrangère vers la table TA_GEOTECH_LIBELLE_LONG permettant d''associer un libelle long à un libelle.';
+
+-- 3. Les contraintes
+-- Contrainte de clé primaire
+ALTER TABLE G_GEO.TA_GEOTECH_LIBELLE
+ADD CONSTRAINT TA_GEOTECH_LIBELLE_PK
+PRIMARY KEY("OBJECTID")
+USING INDEX TABLESPACE G_ADT_INDX;
+
+-- Contraintes de clés étrangères
+ALTER TABLE G_GEO.TA_GEOTECH_LIBELLE
+ADD CONSTRAINT TA_GEOTECH_LIBELLE_FID_LIBELLE_LONG_FK
+FOREIGN KEY("FID_LIBELLE_LONG")
+REFERENCES G_GEO.TA_GEOTECH_LIBELLE_COURT("OBJECTID");
+
+-- 4. Les index
+CREATE INDEX TA_GEOTECH_LIBELLE_FID_LIBELLE_LONG_IDX ON G_GEO.TA_GEOTECH_LIBELLE("FID_LIBELLE_LONG")
+    TABLESPACE G_ADT_INDX;
+
+-- 5. Les droits de lecture, écriture, suppression
+GRANT SELECT ON G_GEO.TA_GEOTECH_LIBELLE TO G_ADMIN_SIG;
+
+/
+
