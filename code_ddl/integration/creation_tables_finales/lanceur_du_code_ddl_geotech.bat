@@ -25,6 +25,7 @@ copy /b %chemin_code_fonction%\creation_GET_CODE_INSEE_CONTAIN_POINT.sql + ^
 %chemin_code_sequence%\creation_SEQ_TA_GEOTECH_LIBELLE_COURT_OBJECTID.sql + ^
 %chemin_code_table%\creation_TA_GEOTECH_LIBELLE_COURT.sql + ^
 %chemin_code_table%\creation_TA_GEOTECH_RELATION_LIBELLE_LONG_COURT.sql + ^
+%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_LIBELLE_OBJECTID.sql + ^
 %chemin_code_table%\creation_TA_GEOTECH_LIBELLE.sql + ^
 %chemin_code_sequence%\creation_SEQ_TA_GEOTECH_SITE_OBJECTID.sql + ^
 %chemin_code_table%\creation_TA_GEOTECH_SITE.sql + ^

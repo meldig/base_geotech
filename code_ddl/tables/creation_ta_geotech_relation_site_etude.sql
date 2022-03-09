@@ -11,7 +11,7 @@ CREATE TABLE G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE (
 
 -- 2. Les commentaires
 COMMENT ON TABLE G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE IS 'Table pivot permettant d''associer : un site à une ou plusieurs études - une étude à un ou plusieurs bureaux d''étude.';
-COMMENT ON COLUMN G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE. IS 'Clé primaire auto-incrémentée de la table.';
+COMMENT ON COLUMN G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE.OBJECTID IS 'Clé primaire auto-incrémentée de la table.';
 COMMENT ON COLUMN G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE.FID_SITE IS 'Clé étrangère vers la table TA_GEOTECH_SITE permettant d''associer un site à une ou plusieurs études et un ou plusieurs bureau d''étude.';
 COMMENT ON COLUMN G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE.FID_ETUDE IS 'Clé étrangère vers la table TA_GEOTECH_ETUDE, permettant d''associer une ou plusieurs études à un site et un ou plusieurs bureaux d''étude.';
 
