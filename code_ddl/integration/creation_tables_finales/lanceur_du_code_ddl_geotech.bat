@@ -16,26 +16,21 @@ SET /p chemin_code_temp="Veuillez saisir le chemin d'acces du dossier integratio
 ::SET /p MDP="Veuillez saisir le MDP : "
 ::SET /p INSTANCE="Veuillez saisir l'instance Oracle : "
 
-copy /b %chemin_code_fonction%\creation_GET_CODE_INSEE_CONTAIN_POINT.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_FAMILLE_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_FAMILLE.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_LIBELLE_LONG_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_LIBELLE_LONG.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_FAMILLE_LIBELLE_LONG.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_LIBELLE_COURT_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_LIBELLE_COURT.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_RELATION_LIBELLE_LONG_COURT.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_LIBELLE_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_LIBELLE.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_SITE_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_SITE.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_ETUDE_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_ETUDE.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_RELATION_SITE_ETUDE.sql + ^
-%chemin_code_sequence%\creation_SEQ_TA_GEOTECH_BUREAU_ETUDE_OBJECTID.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_BUREAU_ETUDE.sql + ^
-%chemin_code_table%\creation_TA_GEOTECH_REPERTOIRE.sql + ^ ^
-%chemin_code_table%\creation_TA_GEOTECH_FICHIER.sql + ^
+copy /b %chemin_code_fonction%\creation_get_code_insee_contain_point.sql + ^
+%chemin_code_sequence%\creation_seq_ta_geotech_famille_objectid.sql + ^
+%chemin_code_table%\creation_ta_geotech_famille.sql + ^
+%chemin_code_sequence%\creation_seq_ta_geotech_libelle_objectid.sql + ^
+%chemin_code_table%\creation_ta_geotech_libelle.sql + ^
+%chemin_code_table%\creation_ta_geotech_famille_libelle.sql + ^
+%chemin_code_sequence%\creation_seq_ta_geotech_site_objectid.sql + ^
+%chemin_code_table%\creation_ta_geotech_site.sql + ^
+%chemin_code_sequence%\creation_seq_ta_geotech_etude_objectid.sql + ^
+%chemin_code_table%\creation_ta_geotech_etude.sql + ^
+%chemin_code_table%\creation_ta_geotech_relation_site_etude.sql + ^
+%chemin_code_sequence%\creation_seq_ta_geotech_bureau_etude_objectid.sql + ^
+%chemin_code_table%\creation_ta_geotech_bureau_etude.sql + ^
+%chemin_code_table%\creation_ta_geotech_repertoire.sql + ^ ^
+%chemin_code_table%\creation_ta_geotech_fichier.sql + ^
 %chemin_code_droits%\droits_lecture_edition_suppression_objets_geotech.sql ^
 %chemin_code_temp%\temp_code_ddl_schema.sql
 

@@ -237,6 +237,87 @@ WHEN NOT MATCHED THEN
 INSERT(a.annee_creation, a.description, a.fid_type_etude)
 VALUES(t.annee_creation, t.description, t.fid_type_etude);
 
+-- Insertion des relations sites/études
+MERGE INTO G_GEO.TA_GEOTECH_RELATION_SITE_ETUDE a
+USING(
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('22 avenue Alfred Lefrançois')
+        AND UPPER(b.description) = UPPER('Construction d''un parking relais en superstructures')
+    UNION ALL
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('115 rue DELESPAUL')
+        AND UPPER(b.description) = UPPER('Restructuration du bâtiment SOPURA')
+    UNION ALL
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('14 place du général Faidherbe')
+        AND UPPER(b.description) = UPPER('Justification des fondations existantes du bâtiment HALL B')
+    UNION ALL
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('Avenue de la Marne')
+        AND UPPER(b.description) = UPPER('parking relais Cerisaie')
+    UNION ALL
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('Quai de la Deûle')
+        AND UPPER(b.description) = UPPER('Construction d''un parking en superstructures au PEM de DON SAINGHIN')
+    UNION ALL
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('Rue du grand but')
+        AND UPPER(b.description) = UPPER('Construction d''une ombrière photovoltaïque sur le parking relais')
+    UNION ALL
+    SELECT
+        a.objectid AS id_site,
+        b.objectid AS id_etude
+    FROM
+        G_GEO.TA_GEOTECH_SITE a,
+        G_GEO.TA_GEOTECH_ETUDE b
+    WHERE
+        UPPER(a.adresse) = UPPER('34 rue de Lille')
+        AND UPPER(b.description) = UPPER('Aménagement de la cour Paux')
+)t
+ON (
+    a.fid_site = t.id_site
+    AND a.fid_etude = t.id_etude
+    )
+WHEN NOT MATCHED THEN
+INSERT(a.fid_site, a.fid_etude)
+VALUES(t.id_site, t.id_etude);
+
 -- Insertion des bureaux d'étude
 MERGE INTO G_GEO.TA_GEOTECH_BUREAU_ETUDE a
 USING(
