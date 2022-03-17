@@ -9,6 +9,7 @@ CREATE TABLE G_GEO.TA_GEOTECH_SITE (
     "CODE_INSEE" AS (TRIM(GET_CODE_INSEE_CONTAIN_POINT(geom))),
     "X_EPSG2154" AS (ROUND(GEOM.SDO_POINT.X,6)),
     "Y_EPSG2154" AS (ROUND(GEOM.SDO_POINT.Y,6)),
+    "DESCRIPTION" VARCHAR2(4000),
     "ADRESSE" VARCHAR2(4000)
  );
 
@@ -19,6 +20,7 @@ COMMENT ON COLUMN G_GEO.TA_GEOTECH_SITE.GEOM IS 'Champ géométrique de type pon
 COMMENT ON COLUMN G_GEO.TA_GEOTECH_SITE.CODE_INSEE IS 'Champ calculé, récupérant via une requête spatiale, le code INSEE de la commune d''appartenance de chaque site.';
 COMMENT ON COLUMN G_GEO.TA_GEOTECH_SITE.X_EPSG2154 IS 'Champ calculé récupérant les coordonnées en X de chaque site en Lambert93/RGF-93.';
 COMMENT ON COLUMN G_GEO.TA_GEOTECH_SITE.Y_EPSG2154 IS 'Champ calculé récupérant les coordonnées en Y de chaque site en Lambert93/RGF-93.';
+COMMENT ON COLUMN G_GEO.TA_GEOTECH_SITE.DESCRIPTION IS 'Description des études auxquelles chaque site est lié.';
 COMMENT ON COLUMN G_GEO.TA_GEOTECH_SITE.ADRESSE IS 'Adresse de chaque site.';
 
 -- 3. Les métadonnées spatiales
@@ -61,6 +63,9 @@ CREATE INDEX TA_GEOTECH_SITE_Y_EPSG2154_IDX ON G_GEO.TA_GEOTECH_SITE("Y_EPSG2154
     TABLESPACE G_ADT_INDX;
 
 CREATE INDEX TA_GEOTECH_SITE_ADRESSE_IDX ON G_GEO.TA_GEOTECH_SITE("ADRESSE")
+    TABLESPACE G_ADT_INDX;
+
+CREATE INDEX TA_GEOTECH_SITE_DESCRIPTION_IDX ON G_GEO.TA_GEOTECH_SITE("DESCRIPTION")
     TABLESPACE G_ADT_INDX;
 
 -- 5. Les droits de lecture, écriture, suppression
